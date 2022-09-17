@@ -4,7 +4,7 @@ A hackathon idea generator that looks on Devpost for past hackathon ideas and ge
 Scraper.getProjectData() returns a JSON with the form:
 ```
 {
-  [
+  "projectJsons": [
     {
       "title": project_title,
       "subtitle": subtitle,
