@@ -5,7 +5,7 @@ from scraper import getProjectData
 import threading
 from os.path import exists
 
-NUMPROJECTREFERENCES = 3
+NUMPROJECTREFERENCES = 5
 
 # what we're trying to do
 TASK_DESCRIPTION = "This program will generate a project title, subtitle, and description for a hackathon project."
@@ -87,7 +87,7 @@ def generate():
     ideas_processed = []
     for idea in ideas:
         print("idea", idea)
-        print(idea.strip())
+        # print(idea.strip())
         re_results = re.search(
             "Project title: (.*)\nProject subtitle: (.*)\nProject description: ((.|\n)*)", idea.strip())
         if not re_results:
