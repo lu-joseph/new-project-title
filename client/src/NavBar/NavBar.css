@@ -1,0 +1,23 @@
+.navBar-container {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.navBar-container  > div > p {
+    font-size: 20px;
+    display: none;
+}
+
+.navBar-container_title {
+    display: flex;
+    align-items: center;
+}
+
+
+.navBar-container_title > div > img {
+    width:70px;
+    padding-left:20px ;
+    cursor:pointer;
+}

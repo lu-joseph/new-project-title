@@ -1,11 +1,13 @@
 import React from 'react'
 import NavBar from './NavBar/NavBar'
+import HomeBody from './HomeBody/HomeBody'
 
 const Home = () => {
   return (
-    <>
-    <NavBar/>
-    </>
+    <div>
+        <NavBar/>
+        <HomeBody/>
+    </div>
   )
 }
 

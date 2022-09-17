@@ -1,0 +1,16 @@
+.homeBody {
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+    justify-content: center;
+}
+
+.homeBodyIllustration img {
+    width:600px;
+}
+
+.homeBodyTextImage img {
+    width: 500px;
+
+}
