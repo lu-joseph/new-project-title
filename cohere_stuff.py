@@ -5,10 +5,10 @@ from scraper import getProjectData
 import threading
 from os.path import exists
 
-NUMPROJECTREFERENCES = 10
+NUMPROJECTREFERENCES = 3
 
 # what we're trying to do
-TASK_DESCRIPTION = "This program will generate a project title and project subtitle for a hackathon project."
+TASK_DESCRIPTION = "This program will generate a project title, subtitle, and description for a hackathon project."
 
 STOP_SEQUENCE = "--"
 
@@ -68,7 +68,7 @@ def generate():
     prompt = TASK_DESCRIPTION + "\n" + "".join(map(lambda project: (
         STOP_SEQUENCE + "\n" +
         "Project title: " + project["title"] + "\n" +
-        "Project subtitle: " + project["subtitle"] + "\n"
+        "Project subtitle: " + project["subtitle"] + "\n" +
         "Project description: " + project["description"] + "\n"
     ), data)) + STOP_SEQUENCE + "\n"
 
@@ -76,7 +76,7 @@ def generate():
 
     response = co.generate(
         prompt=prompt,
-        max_tokens=300,
+        max_tokens=250,
         temperature=1.0
     )
 
@@ -88,12 +88,13 @@ def generate():
     for idea in ideas:
         print("idea", idea)
         re_results = re.search(
-            "Project title: (.*)\nProject subtitle: (.*)", idea.strip())
+            "Project title: (.*)\nProject subtitle: (.*)\nProject description: (.*)", idea.strip())
         if not re_results:
             break
         ideas_processed.append({
             "title": re_results.group(1),
             "subtitle": re_results.group(2),
+            "description": re_results.group(3)
         })
 
     with open(DATA_FILE, "r") as f:

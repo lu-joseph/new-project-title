@@ -1,5 +1,6 @@
 from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup as soup
+import json
 
 # numProjects = 5
 # pageToParse = "https://devpost.com/software/search?query=is%3Afeatured"
@@ -31,21 +32,23 @@ def getProjectData(numProjects, pageToParse):
         tags = []
         for tag in builtWith:
             tags.append(tag.text)
-        galleryDiv = projectPageSoup.select_one('#gallery')
+        # print("title:" + title)
+        descriptionDiv = projectPageSoup.select('#app-details-left > div')[1]
+        # print(descriptionDiv.prettify())
         description = ""
-        for component in galleryDiv.next_siblings:
-            if (len(description) > 200):
+        for component in descriptionDiv.children:
+            # print(component)
+            # print()
+            if (len(description) > 500):
                 break
             description += component.text
 
-        print(title + ":")
-        print(description)
+            description = description
 
         dataDict = {"title": title, "subtitle": subtitle,
-                    "description": description, "builtWith": tags}
+                    "description": description.strip(), "builtWith": tags}
         projects.append(dataDict)
-
     return projects
 
 
-getProjectData(5, "https://devpost.com/software/search?query=is%3Afeatured")
+# getProjectData(3, "https://devpost.com/software/search?query=is%3Afeatured")
