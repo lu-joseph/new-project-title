@@ -36,5 +36,5 @@ def getProjectData(numProjects, pageToParse):
         ProjectJsonString = json.dumps(dataDict)
         projectJsons.append(ProjectJsonString)
 
-    totalJson = "{" + str(projectJsons) + "}"
+    totalJson = '{"projectJsons":' + str(projectJsons) + "}"
     return json.dumps(totalJson)
