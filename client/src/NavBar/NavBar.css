@@ -3,11 +3,13 @@
     justify-content:space-between;
     align-items: center;
     padding: 20px;
+    height: 70px;
+    position: absolute;
+    top: 0;
 }
 
 .navBar-container  > div > p {
     font-size: 20px;
-    display: none;
 }
 
 .title {

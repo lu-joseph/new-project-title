@@ -1,0 +1,15 @@
+.sidebar {
+    position: absolute;
+    top: 80px;
+    width: 250px;
+    padding: 20px;
+    left:0;
+}
+
+.type {
+    margin-bottom: 50px;
+}
+
+.type > p {
+    margin-bottom: 20px;
+}
