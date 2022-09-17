@@ -3,6 +3,7 @@ import json
 import re
 from scraper import getProjectData
 import threading
+from os.path import exists
 
 # what we're trying to do
 TASK_DESCRIPTION = "This program will generate a project title and project subtitle for a hackathon project."
@@ -13,6 +14,11 @@ DATA_FILE = "data.json"
 
 # retrieves a generated idea from our store
 def get_idea():
+  if not exists(DATA_FILE):
+    data = []
+    with open(DATA_FILE, "w+") as f:
+      f.write(json.dumps(data))
+
   with open(DATA_FILE) as f:
     data = json.load(f)
   
