@@ -10,7 +10,7 @@ const NavBar = () => {
         <img src={logo}/>
     </div>
     <div>
-        <p>
+        <p className='title'>
             New Project Title
         </p>
     </div>

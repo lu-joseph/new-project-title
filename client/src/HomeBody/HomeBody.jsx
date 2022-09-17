@@ -3,6 +3,7 @@ import illustration from '.././assets/illustration.jpg'
 import textImage from '../assets/textImage.jpg'
 import Button from '../Button/Button'
 import './HomeBody.css'
+import { Link } from 'react-router-dom'
 
 const HomeBody = () => {
   return (
@@ -11,8 +12,10 @@ const HomeBody = () => {
             <img  src={illustration} />
         </div>
         <div className='homeBodyTextImage'>
-            I<img  src={textImage} />
-            <Button/>
+            <img  src={textImage} />
+           <Link style={{textDecoration: 'none'}} to= '/ideas'>
+           <Button/>
+           </Link>
         </div>
     </div>
 
