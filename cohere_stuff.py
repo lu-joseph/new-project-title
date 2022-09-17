@@ -69,7 +69,7 @@ def generate():
         STOP_SEQUENCE + "\n" +
         "Project title: " + project["title"] + "\n" +
         "Project subtitle: " + project["subtitle"] + "\n"
-        # "Project description: " + project["description"] + "\n"
+        "Project description: " + project["description"] + "\n"
     ), data)) + STOP_SEQUENCE + "\n"
 
     print("prompt:", prompt)
