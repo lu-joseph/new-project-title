@@ -31,7 +31,21 @@ def getProjectData(numProjects, pageToParse):
         tags = []
         for tag in builtWith:
             tags.append(tag.text)
-        dataDict = {"title": title, "subtitle": subtitle, "builtWith": tags}
+        galleryDiv = projectPageSoup.select_one('#gallery')
+        description = ""
+        for component in galleryDiv.next_siblings:
+            if (len(description) > 200):
+                break
+            description += component.text
+
+        print(title + ":")
+        print(description)
+
+        dataDict = {"title": title, "subtitle": subtitle,
+                    "description": description, "builtWith": tags}
         projects.append(dataDict)
 
     return projects
+
+
+getProjectData(5, "https://devpost.com/software/search?query=is%3Afeatured")

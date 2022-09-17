@@ -8,16 +8,19 @@ Scraper.getProjectData() returns a JSON with the form:
     {
       "title": project_title,
       "subtitle": subtitle,
+      "description": description,
       "builtWith": [built_with_tags]
     },
     {
       "title": project_title,
       "subtitle": subtitle,
+      "description": description,
       "builtWith": [built_with_tags]
     },
     {
       "title": project_title,
       "subtitle": subtitle,
+      "description": description,
       "builtWith": [built_with_tags]
     },
   ]
