@@ -63,7 +63,7 @@ def generate():
     co = cohere.Client(KEY)
 
     data = getProjectData(
-        NUMPROJECTREFERENCES, "https://devpost.com/software/search?query=is%3Afeatured")
+        NUMPROJECTREFERENCES, "https://devpost.com/software/popular?query=is%3Awinner")
 
     prompt = TASK_DESCRIPTION + "\n" + "".join(map(lambda project: (
         STOP_SEQUENCE + "\n" +
@@ -87,8 +87,9 @@ def generate():
     ideas_processed = []
     for idea in ideas:
         print("idea", idea)
+        print(idea.strip())
         re_results = re.search(
-            "Project title: (.*)\nProject subtitle: (.*)\nProject description: (.*)", idea.strip())
+            "Project title: (.*)\nProject subtitle: (.*)\nProject description: ((.|\n)*)", idea.strip())
         if not re_results:
             break
         ideas_processed.append({
