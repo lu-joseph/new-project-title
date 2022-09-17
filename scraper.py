@@ -1,4 +1,3 @@
-import json
 from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup as soup
 
@@ -20,21 +19,33 @@ def getProjectData(numProjects, pageToParse):
     projectPageURLs = staffPicksPageSoup.select(
         '#container > div.row > div.columns > div.portfolio-row > div > a')
 
-    projectJsons = []
+    projects = []
 
     for i in range(numProjects):
         projectURL = projectPageURLs[i].attrs["href"]
         projectPageSoup = getPageSoup(projectURL)
-        title = projectPageSoup.select_one('#app-title').text
+        title = projectPageSoup.select_one('#app-title').text.strip()
         subtitle = projectPageSoup.select_one(
-            '#software-header > div.row > div.columns > p.large').text
+            '#software-header > div.row > div.columns > p.large').text.strip()
         builtWith = projectPageSoup.select('#built-with > ul > li')
         tags = []
         for tag in builtWith:
             tags.append(tag.text)
-        dataDict = {"title": title, "subtitle": subtitle, "builtWith": tags}
-        ProjectJsonString = json.dumps(dataDict)
-        projectJsons.append(ProjectJsonString)
+        galleryDiv = projectPageSoup.select_one('#gallery')
+        description = ""
+        for component in galleryDiv.next_siblings:
+            if (len(description) > 200):
+                break
+            description += component.text
 
-    totalJson = "{" + str(projectJsons) + "}"
-    return json.dumps(totalJson)
+        print(title + ":")
+        print(description)
+
+        dataDict = {"title": title, "subtitle": subtitle,
+                    "description": description, "builtWith": tags}
+        projects.append(dataDict)
+
+    return projects
+
+
+getProjectData(5, "https://devpost.com/software/search?query=is%3Afeatured")
