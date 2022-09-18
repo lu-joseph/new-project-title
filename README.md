@@ -1,5 +1,8 @@
 # new-project-title
-A hackathon idea generator that looks on Devpost for past hackathon ideas and generate a new one using the Cohere API
+
+ARE YOU LOOKING FOR A HACKATHON IDEA? Well lucky you, cause you find us.
+
+A hackathon idea generator that looks on Devpost for past hackathon ideas and generate a new one using the Cohere API.
 
 Scraper.getProjectData() returns a JSON with the form:
 ```
