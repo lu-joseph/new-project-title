@@ -21,6 +21,13 @@ def generate_post():
     return jsonify(get_idea())
 
 
+@cross_origin
+@app.get("/generate/<category>")
+def generate_post(cateogry):
+    print('The category is: ' + cateogry)
+    return jsonify(get_idea(cateogry))
+
+
 def main():
     app.run()
 

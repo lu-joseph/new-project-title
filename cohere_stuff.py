@@ -19,21 +19,25 @@ DATA_FILE = "data.json"
 RESTOCK_TO = 5
 
 # restocks ideas until we have at least 5 ready
-def restock():
-  with open(DATA_FILE) as f:
-    data = json.load(f)
 
-  restock_count = 0
-  while len(data) <= RESTOCK_TO:
+
+def restock():
     with open(DATA_FILE) as f:
-      data = json.load(f)
-    print("restocking ideas")
-    generate()
-    restock_count += 1
-    if restock_count >= 5:
-      break
+        data = json.load(f)
+
+    restock_count = 0
+    while len(data) <= RESTOCK_TO:
+        with open(DATA_FILE) as f:
+            data = json.load(f)
+        print("restocking ideas")
+        generate()
+        restock_count += 1
+        if restock_count >= 5:
+            break
 
 # retrieves a generated idea from our store
+
+
 def get_idea():
     if not exists(DATA_FILE):
         data = []
@@ -71,7 +75,7 @@ def get_idea():
 # generates new ideas
 
 
-def generate():
+def generate(category=""):
     print("generating new ideas...")
     with open('key.txt', 'r') as file:
         KEY = file.read().replace('\n', '')
@@ -79,7 +83,7 @@ def generate():
     co = cohere.Client(KEY)
 
     data = getProjectData(
-        NUMPROJECTREFERENCES, "https://devpost.com/software/popular?query=is%3Awinner+" + QUERY)
+        NUMPROJECTREFERENCES, "https://devpost.com/software/popular?query=is%3Awinner+" + category)
 
     prompt = TASK_DESCRIPTION + "\n" + "".join(map(lambda project: (
         STOP_SEQUENCE + "\n" +
