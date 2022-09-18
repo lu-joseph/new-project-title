@@ -1,25 +1,41 @@
 import React,{useState} from 'react'
-import { Button, Card, CardContent, CircularProgress, Typography } from '@mui/material'
+import { Card, CardContent, CircularProgress, Typography } from '@mui/material'
+import Button from '../Button/Button'
+import './IdeaCards.css'
+import { createStyles, makeStyles} from '@material-ui/core';
 
+const CardStyles = makeStyles(() =>
+  createStyles({
+    card: {
+      height: '200px',
+      padding: 6,
+    },
+  })
+);
 
 const IdeaCards = ({isLoading, postContent, getIdea}) => {
+  const [active, setActive] = useState()
+  const classes = CardStyles()
   return (
     <>
-      <Card>
+    <div className='ideacard'>
+      Your idea:
+    </div>
+      <Card className={classes.card}>
         <CardContent>
           {
             isLoading
             ? <CircularProgress />
-            : <>
-              <Typography variant="h5">{postContent.title}</Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">{postContent.subtitle}</Typography>
-              <Typography variant="body2">{postContent.description}</Typography>
-            </>
+            : <div className='ideacard-container'>
+              <h2 variant="h5">{postContent.title}</h2>
+              <h4 sx={{ mb: 1.5 }} color="text.secondary">{postContent.subtitle}</h4>
+              <p variant="body2">{postContent.description}</p>
+            </div>
           }
         </CardContent>
       </Card>
       <div className='button-box'>
-        <Button onClick={getIdea}>Generate</Button>
+        <button className='button' onClick={getIdea}>Generate</button>
       </div>
     </>
   )
