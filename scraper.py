@@ -38,14 +38,11 @@ def getProjectData(numProjects, pageToParse):
         # print(descriptionDiv.prettify())
         description = ""
         for component in descriptionDiv.children:
-            # print(component)
-            # print()
+            if (component.name[0] == 'h'):
+                continue
             if (len(description) > 500):
                 break
             description += component.text
-
-            description = description
-        # print(title)
         dataDict = {"title": title, "subtitle": subtitle,
                     "description": description.strip(), "builtWith": tags}
         projects.append(dataDict)

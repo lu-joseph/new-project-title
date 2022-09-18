@@ -1,20 +1,23 @@
 .navBar-container {
+    position: fixed;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
     padding: 20px;
     height: 70px;
     position: absolute;
     top: 0;
+    left: 0;
+    width: 100vw;
 }
 
-.navBar-container  > div > p {
+.navBar-container>div>p {
     font-size: 20px;
 }
 
 .title {
     font-size: 15px;
-    padding-left:20px;
+    padding-left: 20px;
     font-weight: bold;
 }
 
@@ -24,8 +27,8 @@
 }
 
 
-.navBar-container_title > div > img {
-    width:70px;
-    padding-left:20px ;
-    cursor:pointer;
+.navBar-container_title>div img {
+    width: 70px;
+    padding-left: 20px;
+    cursor: pointer;
 }

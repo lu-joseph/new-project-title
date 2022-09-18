@@ -8,6 +8,17 @@ import './IdeaPage.css'
 
 const serverLocation = "http://localhost:5000/generate"
 
+const filters = [
+  { text: "Blockchain", display: "Blockchain" },
+  { text: "Hardware", display: "Hardware" },
+  { text: "NLP", display: "NLP" },
+  { text: "IOT", display: "IOT" },
+  { text: "AI+ML", display: "AI/ML" },
+  { text: "Computer+Vision", display: "Computer Vision" },
+]
+
+const idToText = (id) => filters[id].text
+
 const IdeaPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [postContent, setPostContent] = useState({
@@ -15,15 +26,16 @@ const IdeaPage = () => {
     subtitle: "",
     description: ""
   });
+  const [filter, setFilter] = useState(-1);
 
   const getIdea = async () => {
     console.log("getIdea")
     setIsLoading(true);
 
-    // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
+    const category = filter !== -1 ? "/" + idToText(filter) : ""
 
     axios
-      .get(serverLocation, {
+      .get(serverLocation + category, {
         headers: {
           'Access-Control-Allow-Origin': true
         }
@@ -37,33 +49,6 @@ const IdeaPage = () => {
         console.log(e);
         setIsLoading(false);
       })
-
-    // const response = fetch(serverLocation, { "mode": 'no-cors' })
-    //   .then(json => console.log(json))
-
-    // .then((r) => {
-    //   console.log(r);
-    //   console.log(r.json());
-    //   return r.json();
-    // })
-    // .then((data) => {
-    //   console.log("response", data)
-    //   setPostContent(data.data);
-    //   setIsLoading(false);
-    // })
-    // .catch(e => {
-    //   console.log();
-    //   setIsLoading(false);
-    // });
-
-    // setPostContent({
-    //   title: "Test Title",
-    //   subtitle: "Awesome subtitle",
-    //   description: "Descriptions are very long and descsriptive but not too short."
-    // })
-
-    // await new Promise(r => setTimeout(r, 2000));
-    // setIsLoading(false);
   }
 
   return (
@@ -72,7 +57,7 @@ const IdeaPage = () => {
         <NavBar />
       </div>
       <div>
-        <SideBar />
+        <SideBar filter={filter} setFilter={setFilter} filterButtons={filters} />
       </div>
       <div>
         <IdeaCards isLoading={isLoading} postContent={postContent} getIdea={getIdea} />

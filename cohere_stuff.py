@@ -5,7 +5,7 @@ from scraper import getProjectData
 import threading
 from os.path import exists
 
-NUMPROJECTREFERENCES = 6
+NUMPROJECTREFERENCES = 7
 QUERY = "hardware"
 # working queries so far: IoT, Blockchain, NFT,
 
@@ -38,7 +38,7 @@ def restock():
 # retrieves a generated idea from our store
 
 
-def get_idea():
+def get_idea(category=""):
     if not exists(DATA_FILE):
         data = []
         with open(DATA_FILE, "w+") as f:
@@ -56,7 +56,7 @@ def get_idea():
                 "message": "All out of new ideas :("
             }
 
-        generate()
+        generate(category)
 
         with open(DATA_FILE) as f:
             data = json.load(f)

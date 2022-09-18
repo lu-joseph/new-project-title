@@ -3,9 +3,9 @@ import './SideButton.css'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { colors } from '../colors'
 
-const Button = ({text}) => {
+const Button = ({ text, selected, onSelect }) => {
   return (
-    <div className='SideButton' >{text}</div>
+    <div className={'SideButton' + (selected ? " selected" : "")} onClick={onSelect} >{text}</div>
   )
 }
 
