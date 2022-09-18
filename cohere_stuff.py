@@ -16,9 +16,24 @@ STOP_SEQUENCE = "--"
 
 DATA_FILE = "data.json"
 
+RESTOCK_TO = 5
+
+# restocks ideas until we have at least 5 ready
+def restock():
+  with open(DATA_FILE) as f:
+    data = json.load(f)
+
+  restock_count = 0
+  while len(data) <= RESTOCK_TO:
+    with open(DATA_FILE) as f:
+      data = json.load(f)
+    print("restocking ideas")
+    generate()
+    restock_count += 1
+    if restock_count >= 5:
+      break
+
 # retrieves a generated idea from our store
-
-
 def get_idea():
     if not exists(DATA_FILE):
         data = []
@@ -48,8 +63,7 @@ def get_idea():
         f.write(json.dumps(data))
 
     if (len(data) <= 5):
-        print("restocking ideas")
-        thread = threading.Thread(target=generate)
+        thread = threading.Thread(target=restock)
         thread.start()
 
     return idea
