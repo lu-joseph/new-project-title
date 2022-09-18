@@ -5,7 +5,9 @@ from scraper import getProjectData
 import threading
 from os.path import exists
 
-NUMPROJECTREFERENCES = 3
+NUMPROJECTREFERENCES = 6
+QUERY = "hardware"
+# working queries so far: IoT, Blockchain, NFT,
 
 # what we're trying to do
 TASK_DESCRIPTION = "This program will generate a project title, subtitle, and description for a hackathon project."
@@ -63,7 +65,7 @@ def generate():
     co = cohere.Client(KEY)
 
     data = getProjectData(
-        NUMPROJECTREFERENCES, "https://devpost.com/software/popular?query=is%3Awinner")
+        NUMPROJECTREFERENCES, "https://devpost.com/software/popular?query=is%3Awinner+" + QUERY)
 
     prompt = TASK_DESCRIPTION + "\n" + "".join(map(lambda project: (
         STOP_SEQUENCE + "\n" +
@@ -87,7 +89,7 @@ def generate():
     ideas_processed = []
     for idea in ideas:
         print("idea", idea)
-        print(idea.strip())
+        # print(idea.strip())
         re_results = re.search(
             "Project title: (.*)\nProject subtitle: (.*)\nProject description: ((.|\n)*)", idea.strip())
         if not re_results:

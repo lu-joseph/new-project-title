@@ -2,8 +2,9 @@ from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup as soup
 import json
 
-# numProjects = 5
+# NUM_PROJECTS = 5
 # pageToParse = "https://devpost.com/software/search?query=is%3Afeatured"
+# QUERY = "Blockchain"
 
 
 def getPageSoup(url):
@@ -44,11 +45,12 @@ def getProjectData(numProjects, pageToParse):
             description += component.text
 
             description = description
-
+        # print(title)
         dataDict = {"title": title, "subtitle": subtitle,
                     "description": description.strip(), "builtWith": tags}
         projects.append(dataDict)
     return projects
 
 
-# getProjectData(3, "https://devpost.com/software/search?query=is%3Afeatured")
+# getProjectData(
+#     NUM_PROJECTS, "https://devpost.com/software/popular?query=" + QUERY)
