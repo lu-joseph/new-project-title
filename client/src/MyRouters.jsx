@@ -6,8 +6,8 @@ import IdeaPage from './IdeaPage/IdeaPage';
 const MyRouters = () => {
   return (
     <Routes>
-        <Route path="/" element ={<Home/>}/>
-        <Route path="/ideas" element ={<IdeaPage/>}/>
+      <Route path="/" element ={<Home/>}/>
+      <Route path="/ideas" element ={<IdeaPage/>}/>
     </Routes>
   )
 }

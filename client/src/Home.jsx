@@ -5,8 +5,8 @@ import HomeBody from './HomeBody/HomeBody'
 const Home = () => {
   return (
     <div>
-        <NavBar/>
-        <HomeBody/>
+      <NavBar/>
+      <HomeBody/>
     </div>
   )
 }
