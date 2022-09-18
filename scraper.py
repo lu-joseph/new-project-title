@@ -38,8 +38,8 @@ def getProjectData(numProjects, pageToParse):
         # print(descriptionDiv.prettify())
         description = ""
         for component in descriptionDiv.children:
-            if (component.name[0] == 'h'):
-                continue
+            # if (component.name[0] == 'h'):
+            #     continue
             if (len(description) > 500):
                 break
             description += component.text
