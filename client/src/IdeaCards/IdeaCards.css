@@ -1,4 +1,55 @@
 .ideaCard {
     position: absolute;
     left:250px;
+    background-color: #f3f3f3;
+    font-size:40px ;
+}
+
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+    cursor: pointer;
+    border-radius: 40px;
+    padding: 24px 40px 24px 40px;
+    width: 200px;
+    background-color: #4258FF;
+    color: white;
+    transition: all 0.2s ease;
+    border: 1px solid #4258FF;
+    font-weight: bold;
+    font-size: 14px;
+
+}
+
+.button:hover {
+    border:1px solid #4258FF;
+    color: #4258FF;
+    background-color: #f3f3f3;
+}
+
+.active {
+    transition: 0.3s all ease;
+    border:1px solid #4258FF;
+    color: #4258FF;
+    background-color: #f3f3f3;
+}
+
+.ideacard {
+    margin-bottom: 20px;
+}
+
+
+.ideacard-container >h2 {
+
+}
+
+.ideacard-container >h4 {
+    
+} 
+
+.ideacard-container > p {
+    
 }

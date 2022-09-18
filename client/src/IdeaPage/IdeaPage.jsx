@@ -69,9 +69,6 @@ const IdeaPage = () => {
   return (
     <div className='idea-page'>
       <div>
-        <NavBar />
-      </div>
-      <div>
         <SideBar />
       </div>
       <div>
