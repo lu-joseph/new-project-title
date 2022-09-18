@@ -15,13 +15,15 @@ const SideBar = () => {
        </div>
 
        <div>
-       <p> Filter: </p>
-        <SideButtons text={"Blockchain"}/>
+       <p> Filter Project Ideas: </p>
+       <div className='sidebuttons'>
+       <SideButtons text={"Blockchain"}/>
         <SideButtons text={"Hardware"}/>
         <SideButtons text={"NLP"}/>
         <SideButtons text={"IOT"}/>
         <SideButtons text={"AI / ML"}/>
         <SideButtons text={"Computer Vision"}/>
+       </div>
        </div>
     </div>
   )

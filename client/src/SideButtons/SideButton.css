@@ -21,3 +21,11 @@
     color: #4258FF;
     background-color: white;
 }
+
+.SideButton:active {
+    transition: 0.3s all ease;
+    border:1px solid #4258FF;
+    color: #4258FF;
+    background-color: #f3f3f3;
+}
+ 
