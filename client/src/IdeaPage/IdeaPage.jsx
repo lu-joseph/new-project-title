@@ -6,7 +6,7 @@ import axios from 'axios'
 
 import './IdeaPage.css'
 
-const serverLocation = "http://localhost:8000/generate"
+const serverLocation = "http://localhost:5000/generate"
 
 const IdeaPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,23 +22,12 @@ const IdeaPage = () => {
 
     // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
 
-    // axios
-    //   .get(serverLocation, {
-    //     headers:{
-    //       'Access-Control-Allow-Origin': true
-    //     }
-    //   })
-    //   .then((response) => {
-    //     console.log("response", response)
-    //     setPostContent(response.data);
-    //     setIsLoading(false);
-    //   })
-    //   .catch(e => {
-    //     console.log(e);
-    //     setIsLoading(false);
-    //   })
-
-    const response = fetch(serverLocation, {"mode": 'no-cors'})
+    axios
+      .get(serverLocation, {
+        headers: {
+          'Access-Control-Allow-Origin': true
+        }
+      })
       .then((response) => {
         console.log("response", response)
         setPostContent(response.data);
@@ -48,6 +37,24 @@ const IdeaPage = () => {
         console.log(e);
         setIsLoading(false);
       })
+
+    // const response = fetch(serverLocation, { "mode": 'no-cors' })
+    //   .then(json => console.log(json))
+
+    // .then((r) => {
+    //   console.log(r);
+    //   console.log(r.json());
+    //   return r.json();
+    // })
+    // .then((data) => {
+    //   console.log("response", data)
+    //   setPostContent(data.data);
+    //   setIsLoading(false);
+    // })
+    // .catch(e => {
+    //   console.log();
+    //   setIsLoading(false);
+    // });
 
     // setPostContent({
     //   title: "Test Title",
@@ -62,13 +69,13 @@ const IdeaPage = () => {
   return (
     <div className='idea-page'>
       <div>
-        <NavBar/>
+        <NavBar />
       </div>
       <div>
-        <SideBar/>
+        <SideBar />
       </div>
       <div>
-        <IdeaCards isLoading={isLoading} postContent={postContent} getIdea={getIdea}/>
+        <IdeaCards isLoading={isLoading} postContent={postContent} getIdea={getIdea} />
       </div>
     </div>
   )

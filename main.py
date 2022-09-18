@@ -1,21 +1,29 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+#!/usr/bin/env python
+# encoding: utf-8
+import json
+from flask import Flask, jsonify
 from cohere_stuff import get_idea
+from flask_cors import CORS
+from flask_cors import cross_origin
+app = Flask(__name__)
+CORS(app)
 
-app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost"],
-    allow_credentials=False,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
+@cross_origin
 @app.get("/")
 def read_root():
-  return {"message": "Hello World"}
-    
+    return jsonify({"message": "Hello World"})
+
+
+@cross_origin
 @app.get("/generate")
 def generate_post():
-  return get_idea()
+    return jsonify(get_idea())
+
+
+def main():
+    app.run()
+
+
+if __name__ == "__main__":
+    main()
