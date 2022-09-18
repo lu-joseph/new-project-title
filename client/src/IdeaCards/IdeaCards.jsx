@@ -11,9 +11,9 @@ const IdeaCards = ({isLoading, postContent, getIdea}) => {
             isLoading
             ? <CircularProgress />
             : <>
-              <Typography variant="h5">{postContent.title}</Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">{postContent.subtitle}</Typography>
-              <Typography variant="body2">{postContent.description}</Typography>
+              <Typography variant="h5">{postContent?.title}</Typography>
+              <Typography sx={{ mb: 1.5 }} color="text.secondary">{postContent?.subtitle}</Typography>
+              <Typography variant="body2">{postContent?.description}</Typography>
             </>
           }
         </CardContent>

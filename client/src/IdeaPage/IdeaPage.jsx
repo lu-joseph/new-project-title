@@ -20,14 +20,25 @@ const IdeaPage = () => {
     console.log("getIdea")
     setIsLoading(true);
 
-    axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
+    // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
 
-    axios
-      .get(serverLocation, {
-        headers:{
-          'Access-Control-Allow-Origin': true
-        }
-      })
+    // axios
+    //   .get(serverLocation, {
+    //     headers:{
+    //       'Access-Control-Allow-Origin': true
+    //     }
+    //   })
+    //   .then((response) => {
+    //     console.log("response", response)
+    //     setPostContent(response.data);
+    //     setIsLoading(false);
+    //   })
+    //   .catch(e => {
+    //     console.log(e);
+    //     setIsLoading(false);
+    //   })
+
+    const response = fetch(serverLocation, {"mode": 'no-cors'})
       .then((response) => {
         console.log("response", response)
         setPostContent(response.data);
